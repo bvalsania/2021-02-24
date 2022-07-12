@@ -8,6 +8,7 @@ package it.polito.tdp.PremierLeague;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import it.polito.tdp.PremierLeague.model.GiocatoreMIgliore;
 import it.polito.tdp.PremierLeague.model.Match;
 import it.polito.tdp.PremierLeague.model.Model;
 import javafx.event.ActionEvent;
@@ -47,17 +48,46 @@ public class FXMLController {
 
     @FXML
     void doCreaGrafo(ActionEvent event) {
+  
+    	txtResult.clear();
     	
+    	Match m = this.cmbMatch.getValue();
+    	
+    	if(m == null) {
+    		txtResult.appendText("errore, selezionare un match");
+    	}
+    	
+    	String msg = model.creaGrafo(m);
+    	txtResult.appendText(msg);
+    	
+
     }
 
     @FXML
     void doGiocatoreMigliore(ActionEvent event) {    	
+ 
+    	txtResult.clear();
     	
+    	txtResult.appendText("il giocatore migliore è "+this.model.getGiocatoreMigliore());
+    	
+ 
     }
     
     @FXML
     void doSimula(ActionEvent event) {
-
+   
+        	
+        	try {
+        		doGiocatoreMigliore(event);
+        		txtResult.clear();
+            	int azioni= Integer.parseInt(txtN.getText());
+            	txtResult.setText(this.model.finale(azioni));
+        		
+        	}catch(NumberFormatException e){
+        		txtResult.setText("Inserire un numero di azioni valido!\n");
+        	}
+        	
+        	
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
@@ -73,5 +103,11 @@ public class FXMLController {
     
     public void setModel(Model model) {
     	this.model = model;
+    	
+    	
+    	this.cmbMatch.getItems().addAll(this.model.getm());
+    	
+    	
+    	//this.cmbMatch.getItems().addAll(this.model.getmatch());
     }
 }

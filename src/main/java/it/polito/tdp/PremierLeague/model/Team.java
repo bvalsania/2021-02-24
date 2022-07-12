@@ -3,6 +3,8 @@ package it.polito.tdp.PremierLeague.model;
 public class Team {
 	Integer teamID;
 	String name;
+	int goal;
+	int giocatori;
 
 	public Team(Integer teamID, String name) {
 		super();
@@ -23,8 +25,34 @@ public class Team {
 		this.name = name;
 	}
 	
+
+	
+	
+	
+	
+	public int getGoal() {
+		return this.goal;
+	}
+	
+	public void setGoal(int numero) {
+		this.goal= numero;
+	}
+	
+	
+	
 	
 
+	public int getNGiocatori() {
+		return this.giocatori;
+	}
+	
+	public void setNGiocatori(int numero) {
+		this.giocatori=numero;
+	}
+	
+	
+	
+	
 	@Override
 	public String toString() {
 		return name;

@@ -1,8 +1,15 @@
 package it.polito.tdp.PremierLeague.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Player {
 	Integer playerID;
 	String name;
+	
+	double efficienza;
+	Team squadra;
+	List<Player> avversari = new ArrayList<>();
 	
 	public Player(Integer playerID, String name) {
 		super();
@@ -21,6 +28,38 @@ public class Player {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	
+
+	
+	public double getEfficienza() {
+		return efficienza;
+	}
+	public void setEfficienza(double efficienza) {
+		this.efficienza = efficienza;
+	}
+	
+	public void setAvversario(Player p) {
+		avversari.add(p);
+	}
+	
+	public List<Player> getAvversari(){
+		return avversari;
+	}
+	
+	
+
+	public Team getSquadra() {
+		return squadra;
+	}
+
+	public void setSquadra(Team squadra) {
+		this.squadra = squadra;
+	}
+
+	public void setAvversari(List<Player> avversari) {
+		this.avversari = avversari;
 	}
 
 	@Override
